@@ -9,24 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.entity.Order;
 import com.epam.entity.OrderItem;
+import com.epam.entity.OrderService;
 import com.epam.exception.OrderNotFoundException;
-import com.epam.feign.OrderFeignClient;
 import com.epam.repository.OrderServiceRepository;
 
 @RestController
 @EnableFeignClients
-public class OrderController {
+@RequestMapping("/service")
+public class OrderServiceController {
 
-  @Autowired private OrderFeignClient feignClient;
+   @Autowired private OrderFeignClient feignClient;
   @Autowired private OrderServiceRepository orderServiceRepository;
 
   @PostMapping("/orders") 
-  public Order order(@RequestBody Order orderService) {
-    Order savedService = orderServiceRepository.save(orderService);
+  public OrderService order(@RequestBody OrderService orderService) {
+    OrderService savedService = orderServiceRepository.save(orderService);
     List<OrderItem> items = orderService.getItems();
     for (OrderItem item : items) {
       item.setServiceId(savedService.getId());
@@ -36,8 +37,8 @@ public class OrderController {
   }
   
   @GetMapping("/order/{id}")
-  public Order orderInfo(@PathVariable(name = "id") long serviceId) {
-    Order service = orderServiceRepository.findById(serviceId);
+  public OrderService orderInfo(@PathVariable(name = "id") long serviceId) {
+    OrderService service = orderServiceRepository.findById(serviceId);
     if (null == service) {
       throw new OrderNotFoundException("order could not be found!");
     }
@@ -47,6 +48,6 @@ public class OrderController {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(OrderController.class, args);
+    SpringApplication.run(OrderServiceController.class, args);
   }
 }

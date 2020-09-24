@@ -2,9 +2,9 @@ package com.epam.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.epam.entity.Order;
+import com.epam.entity.OrderService;
 
-public interface OrderServiceRepository extends JpaRepository<Order, Long> {
+public interface OrderServiceRepository extends JpaRepository<OrderService, Long> {
 
-  Order findById(long id);
+  OrderService findById(long id);
 }
