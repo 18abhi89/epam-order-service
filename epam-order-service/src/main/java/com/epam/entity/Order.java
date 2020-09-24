@@ -10,15 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "order_service")
+@Table(name = "order")
 @SuppressWarnings("unused")
-public class OrderService implements Serializable {
+public class Order implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
@@ -36,7 +35,6 @@ public class OrderService implements Serializable {
   @Column(name = "shipping_address")
   private String shippingAddress;
 
-  @Transient
   private List<OrderItem> items;
 
   @Column(name = "total_amount")
@@ -91,9 +89,9 @@ public class OrderService implements Serializable {
     this.totalAmount = totalAmount;
   }
 
-  public OrderService() {}
+  public Order() {}
 
-  public OrderService(
+  public Order(
       String customerName,
       Date orderDate,
       String shippingAddress,

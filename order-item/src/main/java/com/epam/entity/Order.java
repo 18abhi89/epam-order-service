@@ -3,7 +3,7 @@ package com.epam.entity;
 import java.util.Date;
 import java.util.List;
 
-public class OrderService{
+public class Order{
 
   private long id;
 
@@ -65,9 +65,9 @@ public class OrderService{
     this.totalAmount = totalAmount;
   }
 
-  public OrderService() {}
+  public Order() {}
 
-  public OrderService(
+  public Order(
       String customerName,
       Date orderDate,
       String shippingAddress,
