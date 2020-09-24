@@ -1,9 +1,11 @@
-package com.epam.entity;
+package com.epam.entity.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Order{
+public class OrderDto implements Serializable {
+  private static final long serialVersionUID = 1L;
 
   private long id;
 
@@ -13,7 +15,7 @@ public class Order{
 
   private String shippingAddress;
 
-  private List<OrderItem> items;
+  private List<OrderItemDto> items;
 
   private Double totalAmount;
 
@@ -49,11 +51,11 @@ public class Order{
     this.shippingAddress = shippingAddress;
   }
 
-  public List<OrderItem> getItems() {
+  public List<OrderItemDto> getItems() {
     return items;
   }
 
-  public void setItems(List<OrderItem> item) {
+  public void setItems(List<OrderItemDto> item) {
     this.items = item;
   }
 
@@ -65,13 +67,13 @@ public class Order{
     this.totalAmount = totalAmount;
   }
 
-  public Order() {}
+  public OrderDto() {}
 
-  public Order(
+  public OrderDto(
       String customerName,
       Date orderDate,
       String shippingAddress,
-      List<OrderItem> items,
+      List<OrderItemDto> items,
       Double totalAmount) {
     super();
     this.customerName = customerName;

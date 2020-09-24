@@ -1,4 +1,4 @@
-package com.epam.controller;
+package com.epam.feignClient;
 
 import java.util.List;
 
