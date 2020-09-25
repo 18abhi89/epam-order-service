@@ -1,7 +1,7 @@
 package com.epam.mapper;
 
+import com.epam.dto.OrderItemDto;
 import com.epam.entity.OrderItem;
-import com.epam.entity.dto.OrderItemDto;
 
 public class OrderItemMapper {
 
@@ -9,6 +9,7 @@ public class OrderItemMapper {
     OrderItem orderItem = new OrderItem();
     orderItem.setProductName(orderItemDto.getProductName());
     orderItem.setQuantity(orderItemDto.getQuantity());
+    orderItem.setServiceId(orderItemDto.getServiceId());
     return orderItem;
   }
 

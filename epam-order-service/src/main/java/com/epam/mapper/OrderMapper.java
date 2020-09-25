@@ -2,10 +2,10 @@ package com.epam.mapper;
 
 import java.util.stream.Collectors;
 
+import com.epam.dto.OrderDto;
+import com.epam.dto.OrderItemDto;
 import com.epam.entity.Order;
 import com.epam.entity.OrderItem;
-import com.epam.entity.dto.OrderDto;
-import com.epam.entity.dto.OrderItemDto;
 
 public class OrderMapper {
 

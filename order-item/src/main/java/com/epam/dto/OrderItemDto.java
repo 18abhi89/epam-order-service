@@ -1,4 +1,4 @@
-package com.epam.entity.dto;
+package com.epam.dto;
 
 import java.io.Serializable;
 

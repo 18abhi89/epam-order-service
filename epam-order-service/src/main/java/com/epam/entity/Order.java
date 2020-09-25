@@ -1,40 +1,41 @@
 package com.epam.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "order")
-@SuppressWarnings("unused")
-public class Order implements Serializable {
-  private static final long serialVersionUID = 1L;
+@Table(name = "order_table")
+public class Order {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @NotNull
   private long id;
 
   @Column(name = "cust_name")
   private String customerName;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+  @JsonFormat(shape = JsonFormat.Shape.STRING)
   @Column(name = "order_date")
   private Date orderDate;
 
   @Column(name = "shipping_address")
   private String shippingAddress;
 
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "item")
   private List<OrderItem> items;
 
   @Column(name = "total_amount")

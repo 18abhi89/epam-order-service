@@ -1,10 +1,17 @@
 package com.epam.entity;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class OrderItem implements Serializable {
-  private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "order_item")
+public class OrderItem {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public long productCode;
 
   public String productName;

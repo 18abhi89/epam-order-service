@@ -1,25 +1,22 @@
 package com.epam.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
-public class OrderItem implements Serializable {
-  private static final long serialVersionUID = 1L;
+@Table(name = "order_item")
+public class OrderItem {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @NotNull
   @Column(name = "product_code")
   public long productCode;
 

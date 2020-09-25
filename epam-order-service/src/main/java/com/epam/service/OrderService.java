@@ -1,8 +1,11 @@
 package com.epam.service;
 
-import com.epam.entity.Order;
-import com.epam.entity.dto.OrderDto;
+import org.springframework.stereotype.Service;
 
+import com.epam.dto.OrderDto;
+import com.epam.entity.Order;
+
+@Service
 public interface OrderService {
 	
 	Order save(OrderDto order);
